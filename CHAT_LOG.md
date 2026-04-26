@@ -37,10 +37,12 @@ The user provided a comprehensive specification for a Full-Stack SaaS platform f
 - Firebase Client and Admin SDK initialized.
 - PayPal API helpers created.
 - `.env` file updated with live Firebase and PayPal credentials.
+- Project pushed to GitHub repository: `nadiaa1987/Crochet-Patterns`.
+- Added `wrangler.toml` with `nodejs_compat` for Cloudflare Pages compatibility.
 
 ### Next Steps:
-- Implement Authentication (Login/Signup) using Firebase Auth.
-- Create User Profile document in Firestore on signup.
-- Set up Firestore Security Rules.
+- Implement PayPal Subscription flow (Frontend buttons + Backend verification).
+- Build Pattern Library and secure PDF download logic.
+- Set up Cloudflare Pages deployment settings.
 
 ---
