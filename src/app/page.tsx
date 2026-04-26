@@ -1,11 +1,34 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { CheckCircle2, Download, Scissors, Heart, ArrowRight, Star } from "lucide-react";
+import { CheckCircle2, Download, Scissors, Heart, ArrowRight, Star, ChevronDown } from "lucide-react";
 
 export default function Home() {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      q: "How many patterns can I download?",
+      a: "As a member, you get unlimited access to our entire library. You can download as many patterns as you like, anytime."
+    },
+    {
+      q: "Can I sell items made from these patterns?",
+      a: "Yes! Every subscription includes a commercial license, meaning you can sell the finished physical products you make using our patterns."
+    },
+    {
+      q: "What format are the patterns in?",
+      a: "All patterns are available as high-quality PDF files that you can view on any device or print out."
+    },
+    {
+      q: "How do I cancel my subscription?",
+      a: "You can cancel your subscription at any time through your account dashboard with just one click. You will maintain access until the end of your billing period."
+    }
+  ];
+
   return (
     <div className="flex flex-col min-h-screen bg-[#FFFDF9]">
       {/* Navigation */}
@@ -185,33 +208,24 @@ export default function Home() {
             <div className="text-center mb-16">
               <h2 className="text-4xl font-playfair font-bold text-zinc-900">Frequently Asked Questions</h2>
             </div>
-            <Accordion type="single" collapsible className="w-full space-y-4">
-              {[
-                {
-                  q: "How many patterns can I download?",
-                  a: "As a member, you get unlimited access to our entire library. You can download as many patterns as you like, anytime."
-                },
-                {
-                  q: "Can I sell items made from these patterns?",
-                  a: "Yes! Every subscription includes a commercial license, meaning you can sell the finished physical products you make using our patterns."
-                },
-                {
-                  q: "What format are the patterns in?",
-                  a: "All patterns are available as high-quality PDF files that you can view on any device or print out."
-                },
-                {
-                  q: "How do I cancel my subscription?",
-                  a: "You can cancel your subscription at any time through your account dashboard with just one click. You will maintain access until the end of your billing period."
-                }
-              ].map((faq, i) => (
-                <AccordionItem key={i} value={`item-${i}`} className="border rounded-2xl px-6 bg-[#FFFDF9]">
-                  <AccordionTrigger className="text-left font-bold text-lg hover:no-underline">{faq.q}</AccordionTrigger>
-                  <AccordionContent className="text-zinc-600 text-base leading-relaxed">
-                    {faq.a}
-                  </AccordionContent>
-                </AccordionItem>
+            <div className="space-y-4">
+              {faqs.map((faq, i) => (
+                <div key={i} className="border rounded-2xl overflow-hidden bg-[#FFFDF9]">
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full flex items-center justify-between p-6 text-left hover:bg-zinc-50 transition-colors"
+                  >
+                    <span className="font-bold text-lg text-zinc-900">{faq.q}</span>
+                    <ChevronDown className={`h-5 w-5 text-zinc-500 transition-transform ${openFaq === i ? "rotate-180" : ""}`} />
+                  </button>
+                  {openFaq === i && (
+                    <div className="px-6 pb-6 text-zinc-600 text-base leading-relaxed animate-in fade-in slide-in-from-top-2">
+                      {faq.a}
+                    </div>
+                  )}
+                </div>
               ))}
-            </Accordion>
+            </div>
           </div>
         </section>
 
