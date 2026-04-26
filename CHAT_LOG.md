@@ -38,11 +38,13 @@ The user provided a comprehensive specification for a Full-Stack SaaS platform f
 - PayPal API helpers created.
 - `.env` file updated with live Firebase and PayPal credentials.
 - Project pushed to GitHub repository: `nadiaa1987/Crochet-Patterns`.
-- Added `wrangler.toml` with `nodejs_compat` for Cloudflare Pages compatibility.
+- **FIX**: Removed `wrangler.toml` to resolve build directory conflicts on Cloudflare Pages.
+- **FIX**: Reverted `package.json` build scripts to standard Next.js build for better Cloudflare compatibility.
 
 ### Next Steps:
-- Implement PayPal Subscription flow (Frontend buttons + Backend verification).
-- Build Pattern Library and secure PDF download logic.
-- Set up Cloudflare Pages deployment settings.
+- Redploy on Cloudflare Pages using:
+    - Build command: `npm run build`
+    - Output directory: `.next`
+- Implement PayPal Subscription flow.
 
 ---

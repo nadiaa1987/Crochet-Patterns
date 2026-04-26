@@ -1,3 +1,0 @@
-name = "crochet-patterns"
-compatibility_flags = [ "nodejs_compat" ]
-pages_build_output_dir = ".next"
